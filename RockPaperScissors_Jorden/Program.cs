@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             string[] options = { "Rock", "Paper", "Scissors" };
-            int rounds = 5;
+          //  int rounds = 5;
             bool gameIsRunning = true;
             while (gameIsRunning)
             {
