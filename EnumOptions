@@ -1,0 +1,10 @@
+
+enum options
+{
+Rock,
+Paper,
+Scissors,
+Spock,
+Lizard
+
+}
