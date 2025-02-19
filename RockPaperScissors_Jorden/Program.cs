@@ -5,17 +5,21 @@
         static void Main(string[] args)
         {
             string[] options = { "Rock", "Paper", "Scissors", "Spock", "Lizard" };
-            int playerRounds = 0;
-            int computerRounds = 0;
             bool gameIsRunning = true;
             while (gameIsRunning)
             {
-                while (playerRounds <= 5 && computerRounds <= 5)
+                int playerRounds = 0;
+                int computerRounds = 0;
+                while (playerRounds < 5 || computerRounds < 5)
                 {
                     Console.WriteLine("Please type either Rock, Paper, Scissors, Spock, or Lizard");
-                    Console.WriteLine("The computer will also pick one.");
-                    Console.WriteLine("Whoever gets to five wins, win the whole game.");
+                    Console.WriteLine("First to five, win.");
                     string? userInput = Console.ReadLine();
+                    while (userInput != "Rock" && userInput != "Paper" && userInput != "Scissors" && userInput != "Spock" && userInput != "Lizard")
+                    {
+                        Console.WriteLine("Invalid");
+                        userInput = Console.ReadLine();
+                    }
                     Random random = new Random();
                     int computer = random.Next(1, 5);
                     switch (computer)
@@ -77,7 +81,6 @@
                                 Console.WriteLine("You tied");
                             }
                             break;
-
                         case 4:
                             Console.WriteLine("The computer has chosen Spock");
                             if (userInput == options[0] || userInput == options[2])
@@ -116,9 +119,17 @@
                                 Console.WriteLine("You tied");
                             }
                             break;
-                        default:
-                            Console.WriteLine("Invaild answer");
-                            break;
+                    }
+                    if (playerRounds == 5)
+                    {
+                        Console.WriteLine("You won.");
+                        gameIsRunning = false;
+                        
+                    }
+                    else if (computerRounds == 5)
+                    {
+                        Console.WriteLine("Computer has won.");
+                        gameIsRunning = false;
                     }
                 }
             }
